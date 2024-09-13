@@ -1,27 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #db00d9 #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  color: #f3f2f4;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.css-container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  width: 100%;
+}
+
+.css-container.navbar {
+  max-width: 120rem;
+}
+
+.css-container.hero {
+  max-width: 104rem;
+  padding: 0;
+}
+
+.description a {
+  color: #0fcb81;
+}
+
+.loader {
+  animation: rotate 1s linear infinite;
+  background-image: linear-gradient(#fff 16px, transparent 0), linear-gradient(#ff00ea 16px, transparent 0), linear-gradient(#ff00ea 16px, transparent 0), linear-gradient(#fff 16px, transparent 0);
+  background-position: 0 0, 0 100%, 100% 0, 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  height: 64px;
+  margin: 10rem auto;
+  position: relative;
+  width: 64px;
+}
+
+button:hover svg {
+  fill: #f3f2f4;
+}
+
+@keyframes rotate {
+  0% {
+    height: 64px;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    width: 64px;
   }
+
+  50% {
+    height: 30px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    width: 30px;
+  }
+
+  100% {
+    height: 64px;
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+    width: 64px;
+  }
+}
+
+.choose-us {
+  font-family: "Noto Sans Georgian", sans-serif;
+}
+
+nav.show {
+  left: 0;
 }
