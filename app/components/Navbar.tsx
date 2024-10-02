@@ -9,39 +9,39 @@ interface Target {
 const Navbar = () => {
   const [fixed, setFixed] = useState(false);
   const [expand, setExpand] = useState(false);
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = function () {
       if (window.scrollY > 160 && !fixed) setFixed(true);
       else if (window.scrollY < 160 && fixed) setFixed(false);
-    });
-    window.addEventListener("resize", (e) => {
+    };
+    const handleResize = function (e: UIEvent) {
       const x = e.currentTarget as Target | null;
       if (x!.innerWidth > 900 && expand) setExpand(false);
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      window.removeEventListener("scroll", () => {
-        if (window.scrollY > 160 && !fixed) setFixed(true);
-        else if (window.scrollY < 160 && fixed) setFixed(false);
-      });
-      window.removeEventListener("resize", (e) => {
-        const x = e.currentTarget as Target | null;
-        if (x!.innerWidth > 900 && expand) setExpand(false);
-      });
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   });
+
   return (
     <header
       className={`h-[10rem] w-full flex items-center ${
         fixed ? "fixed bg-section shadow-navShadow" : "absolute"
       } left-0 top-0 z-[999]`}
     >
-      <div className="flex justify-between items-center css-container navbar">
+      <div className="css-container flex justify-between items-center navbar">
         <Link href="/">
           <h1 className="text-[3rem] font-bold">COINDOM</h1>
         </Link>
         <nav
           className={`flex gap-[4rem] max-sm:absolute max-sm:left-[-100rem] max-sm:top-0 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:w-screen max-sm:h-screen max-sm:bg-gradiant max-sm:gap-[2.5rem] transition-[left] duration-500 ${
-            expand ? "show" : ""
+            expand ? "!left-0" : ""
           }`}
         >
           <svg

@@ -13,13 +13,15 @@ const List = () => {
   useEffect(() => {
     setLoading(true);
     const url = "https://api.coingecko.com/api/v3/coins/markets";
+
     const params = {
-      vs_currency: "usd", // Specify the currency
-      order: "market_cap_desc", // Sort by market cap
-      per_page: 10, // Number of coins to retrieve
-      page: page, // Page number
-      sparkline: false, // Exclude sparkline data
+      vs_currency: "usd",
+      order: "market_cap_desc",
+      per_page: 10,
+      page: page,
+      sparkline: false,
     };
+
     const fetchCoins = async () => {
       const { data } = await axios.get<Coin[]>(url, {
         headers: {
@@ -27,9 +29,11 @@ const List = () => {
         },
         params: params,
       });
+
       setCoins(data);
       setLoading(false);
     };
+
     fetchCoins();
   }, [page]);
 

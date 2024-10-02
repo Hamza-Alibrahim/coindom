@@ -16,13 +16,15 @@ export interface Coin {
 
 const Hero = async () => {
   const url = "https://api.coingecko.com/api/v3/coins/markets";
+
   const params = {
-    vs_currency: "usd", // Specify the currency
-    order: "market_cap_desc", // Sort by market cap
-    per_page: 10, // Number of coins to retrieve
-    page: 1, // Page number
-    sparkline: false, // Exclude sparkline data
+    vs_currency: "usd",
+    order: "market_cap_desc",
+    per_page: 10,
+    page: 1,
+    sparkline: false,
   };
+
   const { data } = await axios.get<Coin[]>(url, {
     headers: {
       Authorization: `Bearer ${process.env.COINGECKO_API_KEY}`,

@@ -1,3 +1,4 @@
+import React from "react";
 import ChooseUs from "./components/ChooseUs";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
